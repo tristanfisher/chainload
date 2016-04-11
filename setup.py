@@ -2,7 +2,6 @@
 
 import os
 import sys
-import chainload
 
 try:
     from setuptools import setup
@@ -18,7 +17,7 @@ with open('README.rst') as f:
 
 setup(
     name='chainload',
-    version=chainload.__version__,
+    version="1.2",
     description='Load a value from an environmental variable, YAML/JSON file, or default to a provided value.',
     long_description=readme,
     author='Tristan Fisher',
@@ -40,5 +39,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Topic :: Utilities',
     ),
+    install_requires=['PyYAML>=3.11'],
     tests_require=['nose']
 )
