@@ -49,6 +49,17 @@ e.g.
     >>> chainload.chain_load_variable("environment", "environment", "debug", variable_file)
     'production'
 
+or, if you have a lot of variables to load, use the class-based approach:
+
+.. code-block:: python
+
+    $ python
+    >>> chainer = chainload.ChainloadSetup(filename="tests/test_settings.yaml", environment_variable_prefix="webapp_")
+    >>> environment_value = chainer("environment")
+
+the latter has the advantage of being far more [DRY](http://stackoverflow.com/questions/6453235/what-does-damp-not-dry-mean-when-talking-about-unit-tests) for larger use-cases.
+
+
 See the docstring for `chain_load_variable`, but this will load a variable in order of:
 
     1. A default value
