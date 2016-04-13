@@ -57,7 +57,7 @@ or, if you have a lot of variables to load, use the class-based approach:
     >>> chainer = chainload.ChainloadSetup(filename="tests/test_settings.yaml", environment_variable_prefix="webapp_")
     >>> environment_value = chainer("environment")
 
-the latter has the advantage of being far more [DRY](http://stackoverflow.com/questions/6453235/what-does-damp-not-dry-mean-when-talking-about-unit-tests) for larger use-cases.
+the latter has the advantage of being far more `DRY <http://stackoverflow.com/questions/6453235/what-does-damp-not-dry-mean-when-talking-about-unit-tests>`_ for larger use-cases.
 
 
 See the docstring for `chain_load_variable`, but this will load a variable in order of:
@@ -93,7 +93,7 @@ If you want to run the tests for this package:
 Filing bugs / issues
 --------------------
 
-When filing a bug report, please include a [Short, Self Contained, Correct (Compilable), Example](http://sscce.org/).
+When filing a bug report, please include a `Short, Self Contained, Correct (Compilable), Example <http://sscce.org/>`_.
 
 
 New features / Pull requests
