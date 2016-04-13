@@ -1,7 +1,8 @@
 import os
 import chainload
 
-test_settings_from_file = chainload.load_file("tests/test_settings.yaml")
+test_settings_filename = "tests/test_settings.yaml"
+test_settings_from_file = chainload.load_file(test_settings_filename)
 
 
 def test_file_loaded():
@@ -67,3 +68,30 @@ the value is loaded from file"""
     _  = chainload.chain_load_variable(None, None, "debug", test_settings_from_file,
                                       attempt_getenv_on_load_file_option_on_missing_envvar_kwarg=False)
     assert _ == "debug"
+
+
+def test_class_instance():
+    """test that a class instance works when an environment variable is not set and we are relying on defaulting to an \
+environment_variable_prefix on the file_option call"""
+
+    _expected_result = "debug"
+
+    # implicit ChainloadSetup(..., attempt_getenv_on_file_option=True)
+    os.environ["webapp_environment"] = "debug"
+    chainer = chainload.ChainloadSetup(filename=test_settings_filename, environment_variable_prefix="webapp_")
+    environment_value = chainer("environment")
+    assert environment_value == _expected_result
+
+
+def test_class_attempt_to_set_reserved_key():
+    """test that an assertion is raised if an extra_options_dict value stomps on a reserved variable"""
+
+    # performs unittest's assertRaises, not ready to pull in unit tests yet
+    assertion_raised = False
+
+    try:
+        chainload.ChainloadSetup(extra_options_dict={"filename": "__break__"})
+    except ValueError:
+        assertion_raised = True
+
+    assert assertion_raised
