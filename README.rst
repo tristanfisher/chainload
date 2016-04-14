@@ -62,11 +62,14 @@ the latter has the advantage of being far more `DRY <http://stackoverflow.com/qu
 
 See the docstring for `chain_load_variable`, but this will load a variable in order of:
 
-    1. A default value
-    2. From file object
-    3a. An environmental variable
-    3b. If the environmental variable is None, and the specified file option name exists in the env,
-    and this behavior is enabled, an attempt to load from an environmental variable of the same name as specified for #2
+
+1. A default value
+
+2. From file object
+
+3. From an environment variable.  
+   
+   Optional: If the environmental variable is None, and the specified file option name exists in the env, and this behavior is enabled, an attempt to load from an environmental variable of the same name as specified for #2
 
 
 Running tests
