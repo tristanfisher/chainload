@@ -2,8 +2,9 @@ import os
 import chainload
 
 test_settings_filename = "tests/test_settings.yaml"
+test_settings_json_filename = "tests/test_settings.json"
 test_settings_from_file = chainload.load_file(test_settings_filename)
-
+test_settings_from_json_file = chainload.load_file(test_settings_json_filename)
 
 def test_file_loaded():
     """test that a file object is correctly loaded as a dictionary"""
@@ -20,6 +21,10 @@ def test_file():
     _ = chainload.chain_load_variable("environment", "environment", "debug", test_settings_from_file)
     assert _ == "production"
 
+def test_json_file():
+    """test that a value is loaded from our JSON file if file and default are set"""
+    _ = chainload.chain_load_variable("environment", "environment", "superprod", test_settings_from_json_file)
+    assert _ == "production"
 
 def test_file_and_envvar():
     """test that a value is loaded from our env var if present in the file and a default is provided"""

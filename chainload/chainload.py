@@ -25,6 +25,7 @@ def load_file(file_name="config.yaml", yaml_loader=yaml.Loader):
             with open(os.path.abspath(file_name)) as _cf:
                 return yaml.load(_cf, Loader=yaml_loader)
         except:
+            raise Warning("Failed to parse as valid YAML (or JSON): %s" % file_name)
             return {}
 
 
