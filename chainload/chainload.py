@@ -79,15 +79,6 @@ def chain_load_variable(file_option,
         3b. If env var is None, and the specified file option name exists in the env, and this behavior is
         enabled, the alternate env var
 
-    In the near future (2016), this will be:
-        1. Default
-        2. Remote settings URL
-        3. Settings file object
-        4. Call to a specified function
-            e.g. admin_email = chain_load_setting(..., function=session.query(Admin).filter_by(name='root').email)
-        5a. Environment variable
-        5b. file option environment-variable if 5a is None and this behavior is enabled
-
 
     @param file_option: the variable to load from a file
     @param environment_variable: the environment variable to try to load
