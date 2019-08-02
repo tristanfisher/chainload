@@ -17,7 +17,7 @@ with open('README.rst') as f:
 
 setup(
     name='chainload',
-    version="1.4",
+    version="1.5",
     description='Load a value from an environmental variable, YAML/JSON file, or default to a provided value.',
     long_description=readme,
     author='Tristan Fisher',
